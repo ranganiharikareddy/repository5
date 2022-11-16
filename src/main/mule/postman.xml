@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:sockets="http://www.mulesoft.org/schema/mule/sockets" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/sockets http://www.mulesoft.org/schema/mule/sockets/current/mule-sockets.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="5bead75c-bae5-4d6e-9def-37cf2b740d9e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="postmanFlow" doc:id="7c9390b1-24c2-4cec-bc1c-e8337267e174" >
+		<http:listener doc:name="Listener" doc:id="b54b3144-134e-48ce-9f52-8c625de809a4" config-ref="HTTP_Listener_config" path="/postman"/>
+		<set-variable value="#[payload]" doc:name="Set Variable" doc:id="ffd7c9ef-dfde-4f2c-9683-9bdce66a25a4" variableName="postman"/>
+	</flow>
+</mule>
